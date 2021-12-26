@@ -6,7 +6,7 @@ ema_decay: 0.9998
 
 YOLOv3:
   backbone: ResNet
-  neck: PPYOLOPAN
+  neck: BiFPN
   yolo_head: YOLOv3Head
   post_process: BBoxPostProcess
 
@@ -19,11 +19,11 @@ ResNet:
   freeze_norm: false
   norm_decay: 0.
 
-PPYOLOPAN:
-  drop_block: true
-  block_size: 3
-  keep_prob: 0.9
-  spp: true
+BiFPN:
+  norm_type: bn
+  num_stacks: 1
+  act: swish
+  num_extra_levels: 2
 
 YOLOv3Head:
   anchors: [[10, 13], [16, 30], [33, 23],
