@@ -286,7 +286,7 @@ class BiFPN(nn.Layer):
                 channels=self.out_channel, stride=s) for s in self.fpn_strides
         ]
 
-    def forward(self, feats):
+    def forward(self, feats, for_mot=False):
         assert len(feats) == len(self.in_channels)
         fpn_feats = []
         for conv_layer, feature in zip(self.lateral_convs, feats):
